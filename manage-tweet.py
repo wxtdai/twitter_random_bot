@@ -3,14 +3,11 @@ import os
 import json
 import config
 
-# In your terminal please set your environment variables by running the following lines of code.
-# export 'CONSUMER_KEY'='<your_consumer_key>'
-# export 'CONSUMER_SECRET'='<your_consumer_secret>'
-
 consumer_key = config.CONSUMER_KEY
 consumer_secret = config.CONSUMER_SECRET
 
-# Be sure to add replace the text of the with the text you wish to Tweet. You can also add parameters to post polls, quote Tweets, Tweet with reply settings, and Tweet to Super Followers in addition to other features.
+
+# テキストをツイートしたいテキストに置き換えることを必ず追加してください。また、パラメータを追加することで、投票の投稿、ツイートの引用、返信設定付きツイート、スーパーフォロワーへのツイートなどの機能を追加することができます。
 payload = {"text": "テスト：このツイートはTwitterAPIで投稿しています。 どうでもいいけど全く同じ内容のツイートは2回はできないっぽい　…これAPI関係ないTwitterそのものの仕様なのか？？"}
 
 # Get request token
