@@ -1,5 +1,7 @@
 import unittest
-import main
+from get_users_me_user_context import My_info as My
+from parse import parse
+from search_mentions import search_mentions
 
 class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラスを作成
     def test_testunit(self): # テスト用のメソッド名は`test_`で始める
@@ -13,6 +15,22 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
         self.assertIn(5,[3,6,5,7])
         self.assertGreaterEqual(9,7)
         print("testOK!")
+
+    def test_search_mentions(self):
+        self.assertEqual(My.id, "1501949516575961101") # @RandomValueBotのid
+        self.assertEqual(len(search_mentions("2244994945")), 10)
+        # search_mentions("1") # id:1 は存在しないのでraise Exceptionになる
+
+    def test_parse(self):
+        content1 = "abc"
+        self.assertEqual(parse(content1), ["abc"])
+        content2 = " def"
+        self.assertEqual(parse(content2), ["def"])
+        content2 = "　\n　def \n \n "
+        self.assertEqual(parse(content2), ["def"])
+
+
+
 
 if __name__ == "__main__":
     unittest.main()
