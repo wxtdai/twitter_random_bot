@@ -32,6 +32,12 @@ def search_mentions(user_id):
     url = create_url(user_id)
     params = get_params()
     json_response = connect_to_endpoint(url, params)
+    if "errors" in json_response:
+        raise Exception(
+            "Request returned an error: {}".format(
+                json_response["errors"][0]["detail"]
+            )
+        )
     print("search_mentions")
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
     return json_response["data"]
