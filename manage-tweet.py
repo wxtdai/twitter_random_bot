@@ -1,5 +1,6 @@
+# ツイートを行う
+
 from requests_oauthlib import OAuth1Session
-import os
 import json
 from config import *
 import datetime
@@ -8,7 +9,12 @@ import datetime
 def post(): # ツイートを行うが毎回認証が必要 -> じゃなくなった
     print("post")
     # テキストをツイートしたいテキストに置き換えることを必ず追加してください。また、パラメータを追加することで、投票の投稿、ツイートの引用、返信設定付きツイート、スーパーフォロワーへのツイートなどの機能を追加することができます。
-    payload = {"text": "[twitter bot 練習中]ここに書いた文章がTwitter上に投稿されます。" + str(datetime.datetime.now())}
+    payload = {
+        "text": "[twitter bot 練習中]ここに書いた文章がTwitter上に投稿されます。" + str(datetime.datetime.now()),
+        "reply": {
+            "in_reply_to_tweet_id": "1502167033152040969"
+        }
+    }
 
     # Get "request token"
     request_token_url = "https://api.twitter.com/oauth/request_token?oauth_callback=oob&x_auth_access_type=write"
@@ -35,7 +41,7 @@ def post(): # ツイートを行うが毎回認証が必要 -> じゃなくな�
 
 def main():
     print("main")
-    get()
+    post()
 
 
 if __name__ == "__main__":
