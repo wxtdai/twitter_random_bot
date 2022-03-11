@@ -1,3 +1,4 @@
+# https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Mention-Timeline/user_mentions.py 
 import requests
 import json
 from config import *
@@ -22,7 +23,7 @@ def get_params():
     # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
     # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
     # source, text, and withheld
-    return {"tweet.fields": "created_at"}
+    return {"tweet.fields": "created_at,public_metrics"}
 
 
 def bearer_oauth(r):
@@ -53,7 +54,9 @@ def search_mentions(user_id = 2244994945):
     json_response = connect_to_endpoint(url, params)
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
 
+def search_my_mentions():
+    search_mentions(get_user_id())
 
 if __name__ == "__main__":
-    search_mentions(get_user_id())
+    search_my_mentions()
     
