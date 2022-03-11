@@ -48,14 +48,17 @@ def connect_to_endpoint(url, params):
     return response.json()
 
 
-def search_mentions(user_id = 2244994945):
+def search_mentions(user_id):
     url = create_url(user_id)
     params = get_params()
     json_response = connect_to_endpoint(url, params)
+    print("search_mentions")
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
+    return json_response
 
 def search_my_mentions():
-    search_mentions(get_user_id())
+    print("search_my_mentions")
+    return search_mentions(get_user_id())
 
 if __name__ == "__main__":
     search_my_mentions()
