@@ -7,7 +7,6 @@ import config
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = config.BEARER_TOKEN
 
-
 def create_url():
     tweet_fields = "tweet.fields=lang,author_id" # 帰ってくるjsonに含む要素
     # Tweet fields are adjustable.
@@ -46,7 +45,7 @@ def connect_to_endpoint(url):
     return response.json()
 
 
-def main():
+def ids_to_tweets():
     url = create_url()
     json_response = connect_to_endpoint(url)
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False)) 
@@ -54,4 +53,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    ids_to_tweets()
