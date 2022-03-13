@@ -1,7 +1,7 @@
 
 from typing import List
 
-from get_users_me_user_context import My_info as My
+from my_info import My_info as My
 
 def is_liked(my_id: int, tweet: dict):
     return False

@@ -1,5 +1,5 @@
 
-from get_users_me_user_context import My_info as My
+from my_info import My_info as My
 
 def parse(text: str):
     text2 = text.replace("@" + My.at_name, '')

@@ -1,5 +1,5 @@
 import unittest
-from get_users_me_user_context import My_info as My
+from my_info import My_info as My
 from parse import parse
 from search_mentions import search_mentions
 

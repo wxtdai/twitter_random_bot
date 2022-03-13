@@ -2,7 +2,7 @@
 import requests
 import json
 from config import *
-from get_users_me_user_context import My_info as My
+from my_info import My_info as My
 
 bearer_token = BEARER_TOKEN
 

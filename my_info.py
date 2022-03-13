@@ -3,6 +3,7 @@ import json
 from config import *
 
 def get_users_me_user_context():
+    print(get_users_me_user_context)
     # User fields are adjustable, options include:
     # created_at, description, entities, id, location, name,
     # pinned_tweet_id, profile_image_url, protected,
