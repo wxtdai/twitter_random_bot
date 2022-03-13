@@ -3,6 +3,7 @@ from my_info import My_info as My
 from parse import parse
 from search_mentions import search_mentions
 
+
 class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラスを作成
     def test_testunit(self): # テスト用のメソッド名は`test_`で始める
         print("testing...")

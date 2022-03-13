@@ -7,7 +7,6 @@ def is_liked(my_id: int, tweet: dict):
     return False
 
 def exclude_liked(tweets: List[dict]):
-    # Todo: exclude process
     non_replyed_tweets = []
     for tweet in tweets:
         if is_liked(My.id, tweet):

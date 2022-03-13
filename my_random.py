@@ -1,6 +1,7 @@
 import random
 from typing import List
 
+
 def dice_str(max = 6) -> str:
     return str(random.randint(1,max))
 
