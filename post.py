@@ -26,7 +26,7 @@ def post(payload: dict):
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
 
 
-def post_with_payload(text: str = "", reply_id: str = ""):
+def make_post_payload(text: str = "", reply_id: str = ""):
     default_text = "[twitter bot 練習中]ここに書いた文章がTwitter上に投稿されます。" + str(datetime.datetime.now()) # Twitterは同じ文章を連投できない仕様なので時刻を入れている
     if text == "":
         text = default_text
@@ -38,7 +38,11 @@ def post_with_payload(text: str = "", reply_id: str = ""):
         payload["reply"] = {
             "in_reply_to_tweet_id": reply_id
         }
-    post(payload)
+    return payload
+
+
+def post_with_payload(text: str = "", reply_id: str = ""):
+    post(post_with_payload(text=text,reply_id=reply_id))
 
 
 if __name__ == "__main__":
