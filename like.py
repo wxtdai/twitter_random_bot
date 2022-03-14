@@ -4,6 +4,7 @@ from requests_oauthlib import OAuth1Session
 import json
 from config import *
 from my_info import My_info as My
+from test_data import *
 
 def like(user_id: str, tweet_id: str) -> bool:
     payload = {"tweet_id": tweet_id} # 複数のツイートを同時にいいねするのは無理っぽい
@@ -33,4 +34,4 @@ def like(user_id: str, tweet_id: str) -> bool:
     return json_response["data"]["liked"]
 
 if __name__ == "__main__":
-    like(My.id, '1502167033152040969') # ex.'1502167033152040969'
+    like(My.id, some_tweets_data["data"][3]["id"])
