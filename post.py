@@ -9,10 +9,7 @@ import datetime
 
 def post(payload: dict):
     print("start:post")
-
     oauth = OAuth1Session(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
-
-    # Making the request
     response = oauth.post(
         "https://api.twitter.com/2/tweets",
         json=payload,
@@ -22,14 +19,14 @@ def post(payload: dict):
         raise Exception(
             "Request returned an error: {} {}".format(response.status_code, response.text)
         )
-
     print("Response code: {}".format(response.status_code))
 
     # Saving the response as JSON
     json_response = response.json()
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
 
-def make_post_payload(text: str = "", reply_id: str = ""):
+
+def post_with_payload(text: str = "", reply_id: str = ""):
     default_text = "[twitter bot 練習中]ここに書いた文章がTwitter上に投稿されます。" + str(datetime.datetime.now()) # Twitterは同じ文章を連投できない仕様なので時刻を入れている
     if text == "":
         text = default_text
@@ -41,8 +38,9 @@ def make_post_payload(text: str = "", reply_id: str = ""):
         payload["reply"] = {
             "in_reply_to_tweet_id": reply_id
         }
-    return payload
+    post(payload)
+
 
 if __name__ == "__main__":
     reply_id = "1502167033152040969"
-    post(make_post_payload(reply_id = reply_id))
+    post_with_payload(reply_id = reply_id)
