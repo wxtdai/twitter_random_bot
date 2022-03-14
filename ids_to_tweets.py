@@ -1,25 +1,22 @@
+# プログラム元: https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Tweet-Lookup/get_tweets_with_bearer_token.py
+
+# リファレンス: https://developer.twitter.com/en/docs/twitter-api/tweets/lookup/api-reference/get-tweets
 
 import requests
 import json
 import config
+from utility import toCSV
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = config.BEARER_TOKEN
 
 def create_url():
-    tweet_fields = "tweet.fields=lang,author_id" # 帰ってくるjsonに含む要素
-    # Tweet fields are adjustable.
-    # Options include:
-    # attachments, author_id, context_annotations,
-    # conversation_id, created_at, entities, geo, id,
-    # in_reply_to_user_id, lang, non_public_metrics, organic_metrics,
-    # possibly_sensitive, promoted_metrics, public_metrics, referenced_tweets,
-    # source, text, and withheld
-    ids = "ids=1278747501642657792,1255542774432063488,1497515066232815621,1499633893104025600"
-    # You can adjust ids to include a single Tweets.
-    # Or you can add to up to 100 comma-separated IDs
-    url = "https://api.twitter.com/2/tweets?{}&{}".format(ids, tweet_fields)
+    tweet_fields = "tweet.fields=lang,author_id,public_metrics&media.fields=url" # 帰ってくるjsonに含む要素
+    ids = [1278747501642657792,1255542774432063488,1497515066232815621,1499633893104025600]
+    ids_str = f"ids={toCSV(ids)}"
+    
+    url = "https://api.twitter.com/2/tweets?{}&{}".format(ids_str, tweet_fields)
     return url
 
 
