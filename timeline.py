@@ -2,9 +2,6 @@ import requests
 import json
 from config import *
 from utility import response_success_check
-
-# To set your environment variables in your terminal run the following line:
-# export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = BEARER_TOKEN
 
 
@@ -52,3 +49,4 @@ def timeline(user_id = 2244994945): # idに意味は無い
 
 if __name__ == "__main__":
     timeline()
+

@@ -6,10 +6,8 @@ import requests
 import json
 import config
 from utility import response_success_check, toCSV
-
-# To set your enviornment variables in your terminal run the following line:
-# export 'BEARER_TOKEN'='<your_bearer_token>'
 bearer_token = config.BEARER_TOKEN
+
 
 def create_url(ids: list):
     tweet_fields = "tweet.fields=lang,author_id,public_metrics&media.fields=url" # 帰ってくるjsonに含む要素
@@ -46,3 +44,4 @@ def ids_to_tweets(ids: list):
 if __name__ == "__main__":
     ids = [1278747501642657792,1255542774432063488,1497515066232815621,1499633893104025600]
     ids_to_tweets(ids)
+

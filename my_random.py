@@ -23,3 +23,4 @@ def my_random(l: List[str]) -> str:
         return special_random(l[0])
     else:
         return random.sample(l)
+

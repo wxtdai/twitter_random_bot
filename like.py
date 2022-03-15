@@ -7,6 +7,7 @@ from my_info import My_info as My
 from test_data import *
 from utility import response_success_check
 
+
 def like(user_id: str, tweet_id: str) -> bool:
     payload = {"tweet_id": tweet_id} # 複数のツイートを同時にいいねするのは無理っぽい
     request_token_url = "https://api.twitter.com/oauth/request_token"
@@ -30,5 +31,7 @@ def like(user_id: str, tweet_id: str) -> bool:
     print(json.dumps(json_response, indent=4, sort_keys=True))
     return json_response["data"]["liked"]
 
+
 if __name__ == "__main__":
     like(My.id, some_tweets_data["data"][3]["id"])
+

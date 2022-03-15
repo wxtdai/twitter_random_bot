@@ -45,3 +45,4 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
 
 if __name__ == "__main__":
     unittest.main()
+
