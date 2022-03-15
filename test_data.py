@@ -9,6 +9,7 @@ my_account_data = {
     }
 }
 
+
 some_tweets_data = {
     "data": [
         {
@@ -58,6 +59,25 @@ some_tweets_data = {
                 "retweet_count": 40
             },
             "text": "3月4日 15:30に「クロスオーバー」フォーマットのメンテナンスを終了いたしました。\nご利用のお客様に、ご迷惑をおかけいたしましたことを深くお詫び申し上げます。\n今後とも「Shadowverse」をよろしくお願いいたします。\nhttps://t.co/JxF117IFBN\n#シャドウバース"
+        }
+    ]
+}
+
+
+# https://twitter.com/NationaL_UniVer/status/1501935784076591112
+a_my_tweet = {
+    "data": [
+        {
+            "author_id": "862955972347572225",
+            "id": "1501935784076591112",
+            "lang": "ja",
+            "public_metrics": {
+                "like_count": 3,
+                "quote_count": 0,
+                "reply_count": 0,
+                "retweet_count": 0
+            },
+            "text": "おお、うまくいった！！"
         }
     ]
 }

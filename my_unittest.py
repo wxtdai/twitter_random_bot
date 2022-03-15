@@ -2,7 +2,9 @@ import unittest
 from my_info import My_info as My
 from parse import parse
 from search_mentions import search_mentions
-
+from utility import *
+from test_data import *
+from config import *
 
 class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラスを作成
     def test_testunit(self): # テスト用のメソッド名は`test_`で始める
@@ -18,7 +20,8 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
         print("testOK!")
 
     def test_search_mentions(self):
-        self.assertEqual(My.id, "1501949516575961101") # @RandomValueBotのid
+        if is_RandomValueBot:
+            self.assertEqual(My.id, my_account_data["data"]["id"]) # @RandomValueBotのid
         self.assertEqual(len(search_mentions("2244994945")), 10)
         # search_mentions("1") # id:1 は存在しないのでraise Exceptionになる
 
@@ -30,6 +33,13 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
         content2 = "　\n　def \n \n "
         self.assertEqual(parse(content2), ["def"])
 
+    def test_utility(self):
+        self.assertEqual(toCSV([111,543,232]), "111,543,232")
+        self.assertEqual(toCSV([]), "")
+        self.assertEqual(toCSV(["abc","ppp"]), "abc,ppp")
+
+    def test_like(self):
+        pass
 
 
 

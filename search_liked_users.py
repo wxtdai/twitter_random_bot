@@ -4,6 +4,7 @@ import requests
 import json
 from config import *
 from utility import response_success_check
+from test_data import *
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
@@ -12,7 +13,8 @@ bearer_token = BEARER_TOKEN
 
 def create_url(tweet_id: str):
     user_fields = "user.fields=created_at,description"
-    url = f"https://api.twitter.com/2/tweets/{tweet_id}/liking_users?max_results=100&expansions=pinned_tweet_id"
+    url = f"https://api.twitter.com/2/tweets/{tweet_id}/liking_users"
+    #    ?max_results=100&expansions=pinned_tweet_id"
     return url, user_fields
 
 
@@ -44,4 +46,5 @@ def search_liked_users(tweet_id: str):
 
 
 if __name__ == "__main__":
-    print(search_liked_users("1466062033967738880")) # 「俺だけしかいないアドカレ。」
+    print(search_liked_users(a_my_tweet["data"][0]["id"]))
+    
