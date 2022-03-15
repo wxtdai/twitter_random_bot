@@ -5,10 +5,10 @@ from search_mentions import search_mentions
 from utility import *
 from test_data import *
 from config import *
+from exclude_replyed import *
 
 class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラスを作成
     def test_testunit(self): # テスト用のメソッド名は`test_`で始める
-        print("testing...")
         self.assertEqual(3, 3) # square関数に3を渡すと9が出力されるかどうか確認
         self.assertNotEqual(2, 1) # square関数に1を渡すと1が出力されるかどうか確認
         self.assertTrue(True) # square関数に-3を渡すと9が出力されるかどうか確認
@@ -17,7 +17,6 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
         self.assertIsNot([1,2],[1,2])
         self.assertIn(5,[3,6,5,7])
         self.assertGreaterEqual(9,7)
-        print("testOK!")
 
     def test_search_mentions(self):
         if is_RandomValueBot:
@@ -40,6 +39,23 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
 
     def test_like(self):
         pass
+
+    def test_exclude_reply(self):
+        self.assertEqual(exclude_replyed([]),[])
+        now_id_int = get_newest_replyed_tweet_id()
+        try:
+            temp_id_int1 = 1498515066232815621 # [2]["id"]と[3]["id"]の間
+            set_newest_replyed_tweet_id(temp_id_int1)
+            correrct_ans1 = [some_tweets[3]]
+            self.assertEqual(exclude_replyed(some_tweets), correrct_ans1)
+
+            temp_id_int2 = 1255542774432063488 # [1]["id"]ちょうど
+            set_newest_replyed_tweet_id(temp_id_int2)
+            correrct_ans2 = [some_tweets[0],some_tweets[2],some_tweets[3]]
+            self.assertEqual(exclude_replyed(some_tweets), correrct_ans2)
+        finally:
+            set_newest_replyed_tweet_id(now_id_int)
+
 
 
 

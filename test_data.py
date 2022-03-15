@@ -62,6 +62,7 @@ some_tweets_data = {
         }
     ]
 }
+some_tweets = some_tweets_data["data"]
 
 
 # https://twitter.com/NationaL_UniVer/status/1501935784076591112
