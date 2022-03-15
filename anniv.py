@@ -1,3 +1,5 @@
+# https://exactsolutions.co.jp/column/rpa/python-twitterapi-tweet/
+
 import random
 import datetime
 import sys
