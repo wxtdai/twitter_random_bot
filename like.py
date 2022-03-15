@@ -5,6 +5,7 @@ import json
 from config import *
 from my_info import My_info as My
 from test_data import *
+from utility import response_success_check
 
 def like(user_id: str, tweet_id: str) -> bool:
     payload = {"tweet_id": tweet_id} # 複数のツイートを同時にいいねするのは無理っぽい
@@ -21,11 +22,7 @@ def like(user_id: str, tweet_id: str) -> bool:
         f"https://api.twitter.com/2/users/{user_id}/likes", json=payload
     )
 
-    if response.status_code != 200:
-        raise Exception(
-            "Request returned an error: {} {}".format(response.status_code, response.text)
-        )
-
+    response_success_check(response, 200)
     print(f"Response code: {response.status_code}")
 
     # Saving the response as JSON

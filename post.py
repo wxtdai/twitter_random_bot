@@ -6,6 +6,8 @@ import json
 from config import *
 import datetime
 
+from utility import response_success_check
+
 
 def post(payload: dict):
     print("start:post")
@@ -15,10 +17,7 @@ def post(payload: dict):
         json=payload,
     )
 
-    if response.status_code != 201:
-        raise Exception(
-            "Request returned an error: {} {}".format(response.status_code, response.text)
-        )
+    response_success_check(response,201)
     print("Response code: {}".format(response.status_code))
 
     # Saving the response as JSON

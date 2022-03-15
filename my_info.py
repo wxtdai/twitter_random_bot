@@ -1,6 +1,7 @@
 from requests_oauthlib import OAuth1Session
 import json
 from config import *
+from utility import response_success_check
 
 
 def get_users_me_user_context():
@@ -22,11 +23,7 @@ def get_users_me_user_context():
     )
 
     response = oauth.get("https://api.twitter.com/2/users/me", params=params)
-
-    if response.status_code != 200:
-        raise Exception(
-            "Request returned an error: {} {}".format(response.status_code, response.text)
-        )
+    response_success_check(response,200)
 
     print("Response code: {}".format(response.status_code))
 

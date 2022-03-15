@@ -3,6 +3,7 @@
 import requests
 import json
 from config import *
+from utility import response_success_check
 
 # To set your enviornment variables in your terminal run the following line:
 # export 'BEARER_TOKEN'='<your_bearer_token>'
@@ -28,12 +29,7 @@ def bearer_oauth(r):
 def connect_to_endpoint(url, user_fields):
     response = requests.request("GET", url, auth=bearer_oauth, params=user_fields)
     print(response.status_code)
-    if response.status_code != 200:
-        raise Exception(
-            "Request returned an error: {} {}".format(
-                response.status_code, response.text
-            )
-        )
+    response_success_check(response,200)
     return response.json()
 
 

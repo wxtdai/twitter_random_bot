@@ -3,6 +3,7 @@ import requests
 import json
 from config import *
 from my_info import My_info as My
+from utility import response_success_check
 
 
 bearer_token = BEARER_TOKEN
@@ -21,12 +22,7 @@ def bearer_oauth(r):
 def connect_to_endpoint(url, params):
     response = requests.request("GET", url, auth=bearer_oauth, params=params)
     print(response.status_code)
-    if response.status_code != 200:
-        raise Exception(
-            "Request returned an error: {} {}".format(
-                response.status_code, response.text
-            )
-        )
+    response_success_check(response,200)
     return response.json()
 
 

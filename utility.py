@@ -1,6 +1,7 @@
 
 from libcst import For
-
+from requests_oauthlib import OAuth1Session
+import json
 
 def toCSV(l: list):
     ret = ""
@@ -12,7 +13,10 @@ def toCSV(l: list):
     return ret
 
 
-if __name__ == "__main__":
-    assert(toCSV([111,543,232]) == "111,543,232")
-    assert(toCSV([]) == "")
-    assert(toCSV(["abc","ppp"]) == "abc,ppp")
+def response_success_check(response, success_code: int):
+    if response.status_code != success_code:
+        raise Exception(
+            "Request returned an error: {} {}".format(
+                response.status_code, response.text
+            )
+        )
