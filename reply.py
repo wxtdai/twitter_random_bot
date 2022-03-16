@@ -1,6 +1,5 @@
 
 from like import like
-from my_info import My_info
 from post import *
 
 

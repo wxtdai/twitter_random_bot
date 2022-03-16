@@ -1,6 +1,6 @@
 # https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/User-Mention-Timeline/user_mentions.py 
+
 import requests
-import json
 from config import *
 from my_info import My_info as My
 from utility import response_success_check
