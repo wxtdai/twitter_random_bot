@@ -10,7 +10,6 @@ from utility import make_my_oauth, response_success_check
 
 def like(user_id: str, tweet_id: str) -> bool:
     payload = {"tweet_id": tweet_id} # 複数のツイートを同時にいいねするのは無理っぽい
-    request_token_url = "https://api.twitter.com/oauth/request_token"
     oauth = make_my_oauth()
 
     # Making the request

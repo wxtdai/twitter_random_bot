@@ -5,23 +5,19 @@ from requests_oauthlib import OAuth1Session
 import json
 from config import *
 import datetime
-from utility import response_success_check
+from utility import make_my_oauth, response_success_check
 
 
 def post(payload: dict):
-    print("start:post")
-    oauth = OAuth1Session(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+    oauth = make_my_oauth()
     response = oauth.post(
         "https://api.twitter.com/2/tweets",
         json=payload,
     )
-
     response_success_check(response,201)
-    print("Response code: {}".format(response.status_code))
-
-    # Saving the response as JSON
     json_response = response.json()
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
+    print()
 
 
 def make_post_payload(text: str = "", reply_id: str = ""):
