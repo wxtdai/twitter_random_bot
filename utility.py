@@ -21,15 +21,15 @@ def response_success_check(response, success_code: int):
         )
 
 
-newest_id_file_name = 'newest_replyed_tweet_id.txt'
+newest_id_file = 'newest_replyed_tweet_id.txt'
 
 def get_newest_replyed_tweet_id() -> int:
-    with open(newest_id_file_name, 'r') as f:
-        for line in f:
+    with open(newest_id_file, 'r') as file:
+        for line in file:
             id_int:int = int(line)
     return id_int
 
 
 def set_newest_replyed_tweet_id(id_int: int):
-    with open(newest_id_file_name, 'w') as file:
+    with open(newest_id_file, 'w') as file:
         file.write(str(id_int))

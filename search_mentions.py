@@ -9,7 +9,7 @@ from utility import response_success_check
 bearer_token = BEARER_TOKEN
 
 def create_url(user_id):
-    return "https://api.twitter.com/2/users/{}/mentions".format(user_id)
+    return "https://api.twitter.com/2/users/{}/mentions?max_results=100".format(user_id)
 
 def get_params():
     return {"tweet.fields": "created_at,public_metrics"}
@@ -27,7 +27,6 @@ def connect_to_endpoint(url, params):
 
 
 def search_mentions(user_id):
-    print("search_mentions")
     url = create_url(user_id)
     params = get_params()
     json_response = connect_to_endpoint(url, params)
@@ -37,8 +36,6 @@ def search_mentions(user_id):
                 json_response["errors"][0]["detail"]
             )
         )
-    print("search_mentions")
-    print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
     return json_response["data"]
 
 
