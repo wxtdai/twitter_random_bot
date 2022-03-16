@@ -1,5 +1,4 @@
 
-from like import like
 from post import *
 
 
