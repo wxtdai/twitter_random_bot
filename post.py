@@ -40,7 +40,7 @@ def make_post_payload(text: str = "", reply_id: str = ""):
 
 
 def post_with_payload(text: str = "", reply_id: str = ""):
-    post(post_with_payload(text=text,reply_id=reply_id))
+    post(make_post_payload(text=text,reply_id=reply_id))
 
 
 if __name__ == "__main__":
