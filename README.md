@@ -7,3 +7,5 @@ https://twitter.com/RandomValueBot
 twitter botを触るのは初めてなのでできることから始めてます。  
 そのため本筋とは全く関係ないプログラムも入っているのでご容赦を。
 
+一応動かせるようになった。
+
