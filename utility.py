@@ -1,5 +1,6 @@
 
 from requests_oauthlib import OAuth1Session
+from config import *
 
 
 def toCSV(l: list):
@@ -21,6 +22,15 @@ def response_success_check(response, success_code: int):
         )
 
 
+def make_my_oauth():
+    return OAuth1Session(
+        CONSUMER_KEY,
+        CONSUMER_SECRET,
+        ACCESS_TOKEN,
+        ACCESS_TOKEN_SECRET,
+    )
+
+
 newest_id_file = 'newest_replyed_tweet_id.txt'
 
 def get_newest_replyed_tweet_id() -> int:
@@ -33,3 +43,5 @@ def get_newest_replyed_tweet_id() -> int:
 def set_newest_replyed_tweet_id(id_int: int):
     with open(newest_id_file, 'w') as file:
         file.write(str(id_int))
+
+

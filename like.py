@@ -5,18 +5,13 @@ import json
 from config import *
 from my_info import My_info as My
 from test_data import *
-from utility import response_success_check
+from utility import make_my_oauth, response_success_check
 
 
 def like(user_id: str, tweet_id: str) -> bool:
     payload = {"tweet_id": tweet_id} # 複数のツイートを同時にいいねするのは無理っぽい
     request_token_url = "https://api.twitter.com/oauth/request_token"
-    oauth = OAuth1Session(
-        CONSUMER_KEY,
-        CONSUMER_SECRET,
-        ACCESS_TOKEN,
-        ACCESS_TOKEN_SECRET,
-    )
+    oauth = make_my_oauth()
 
     # Making the request
     response = oauth.post(

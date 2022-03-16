@@ -1,22 +1,16 @@
 from requests_oauthlib import OAuth1Session
 import json
 from config import *
-from utility import response_success_check
+from utility import make_my_oauth, response_success_check
 
 
 def get_users_me_user_context():
-    print("start:get_users_me_user_context()")
     fields = "created_at,description"
     params = {"user.fields": fields}
 
     # Get request token
     request_token_url = "https://api.twitter.com/oauth/request_token"
-    oauth = OAuth1Session(
-        CONSUMER_KEY,
-        CONSUMER_SECRET,
-        ACCESS_TOKEN,
-        ACCESS_TOKEN_SECRET
-    )
+    oauth = make_my_oauth()
 
     response = oauth.get("https://api.twitter.com/2/users/me", params=params)
     response_success_check(response,200)
