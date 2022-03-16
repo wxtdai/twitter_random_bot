@@ -14,14 +14,14 @@ def special_random(s: str) -> str:
     if s=="サイコロ":
         return dice_str()
     elif len(match)>0:
-        return random.choice(match)
+        return dice_str(int(match[0]))
     else:
         return s
 
 
 def my_random(l: List[str]) -> str:
     if len(l)==0:
-        ret = dice_str
+        ret = dice_str()
     elif len(l)==1:
         ret = special_random(l[0])
     else:
