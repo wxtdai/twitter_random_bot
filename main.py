@@ -29,7 +29,7 @@ def main():
         parsed_tweet_contents:List[str] = parse(tweet["text"])
         main_context:str = my_random(parsed_tweet_contents)
         reply_content:str = add_header_text(main_context)
-        # reply(tweet, reply_content)
+        reply(tweet, reply_content)
         logger.debug(tweet)
         logger.debug(reply_content)
 
