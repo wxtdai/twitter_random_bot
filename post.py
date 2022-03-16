@@ -15,6 +15,7 @@ def post(payload: dict):
         json=payload,
     )
     response_success_check(response,201)
+    print("post成功！")
     json_response = response.json()
     print(json.dumps(json_response, indent=4, sort_keys=True, ensure_ascii=False))
     print()
