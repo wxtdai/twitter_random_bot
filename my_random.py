@@ -1,5 +1,6 @@
 import random
 from typing import List
+import re
 
 
 def dice_str(max = 6) -> str:
@@ -7,20 +8,24 @@ def dice_str(max = 6) -> str:
 
 
 def special_random(s: str) -> str:
-    digit_only_str = ("".join(filter(str.isdigit, str)))
+    regex = re.compile('d+')
+    match = regex.findall(s)
+    
     if s=="サイコロ":
-        return dice_str
-    elif len(digit_only_str)>0:
-        return str(random.randint(1,int(digit_only_str)))
+        return dice_str()
+    elif len(match)>0:
+        return random.choice(match)
     else:
         return s
 
 
 def my_random(l: List[str]) -> str:
     if len(l)==0:
-        return dice_str
+        ret = dice_str
     elif len(l)==1:
-        return special_random(l[0])
+        ret = special_random(l[0])
     else:
-        return random.sample(l)
+        ret = random.choice(l)
+    assert(type(ret)==str)
+    return ret
 
