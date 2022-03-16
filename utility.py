@@ -1,4 +1,5 @@
 
+import os
 from requests_oauthlib import OAuth1Session
 from config import *
 
@@ -31,7 +32,8 @@ def make_my_oauth():
     )
 
 
-newest_id_file = 'newest_replyed_tweet_id.txt'
+base = os.path.dirname(os.path.abspath(__file__))
+newest_id_file = os.path.normpath(os.path.join(base, 'newest_replyed_tweet_id.txt'))
 
 def get_newest_replyed_tweet_id() -> int:
     with open(newest_id_file, 'r') as file:
