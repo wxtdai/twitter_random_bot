@@ -1,5 +1,6 @@
 import unittest
 from my_info import My_info as My
+from my_random import dice_str, my_random
 from parse import parse
 from search_mentions import search_mentions
 from utility import *
@@ -21,24 +22,8 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
     def test_search_mentions(self):
         if is_RandomValueBot:
             self.assertEqual(My.id, my_account_data["data"]["id"]) # @RandomValueBotのid
-        self.assertEqual(len(search_mentions("2244994945")), 10)
+        # self.assertEqual(len(search_mentions("2244994945")), 10)
         # search_mentions("1") # id:1 は存在しないのでraise Exceptionになる
-
-    def test_parse(self):
-        content1 = "abc"
-        self.assertEqual(parse(content1), ["abc"])
-        content2 = " def"
-        self.assertEqual(parse(content2), ["def"])
-        content2 = "　\n　def \n \n "
-        self.assertEqual(parse(content2), ["def"])
-
-    def test_utility(self):
-        self.assertEqual(toCSV([111,543,232]), "111,543,232")
-        self.assertEqual(toCSV([]), "")
-        self.assertEqual(toCSV(["abc","ppp"]), "abc,ppp")
-
-    def test_like(self):
-        pass
 
     def test_exclude_reply(self):
         self.assertEqual(exclude_replyed([]),[])
@@ -49,13 +34,36 @@ class TestMysquare(unittest.TestCase): # unittest.TestCaseを継承したクラ�
             correrct_ans1 = [some_tweets[3]]
             self.assertEqual(exclude_replyed(some_tweets), correrct_ans1)
 
-            temp_id_int2 = 1255542774432063488 # [1]["id"]ちょうど
+            temp_id_int2 = 1255542774432063488 # 最小のidである[1]["id"]ちょうど
             set_newest_replyed_tweet_id(temp_id_int2)
             correrct_ans2 = [some_tweets[0],some_tweets[2],some_tweets[3]]
             self.assertEqual(exclude_replyed(some_tweets), correrct_ans2)
         finally:
             set_newest_replyed_tweet_id(now_id_int)
 
+    def test_parse(self):
+        content1 = "abc"
+        self.assertEqual(parse(content1), ["abc"])
+        content2 = " def"
+        self.assertEqual(parse(content2), ["def"])
+        content2 = "　\n　def \n \n "
+        self.assertEqual(parse(content2), ["def"])
+
+    def test_random(self):
+        self.assertEqual(my_random(["test_text"]),"test_text")
+        self.assertEqual(dice_str(1), "1")
+        self.assertGreaterEqual(dice_str(), "1")
+        self.assertLessEqual(dice_str(), "6")
+
+    def test_utility(self):
+        self.assertEqual(toCSV([111,543,232]), "111,543,232")
+        self.assertEqual(toCSV([]), "")
+        self.assertEqual(toCSV(["abc","ppp"]), "abc,ppp")
+
+    def test_like(self):
+        pass
+
+    
 
 
 
