@@ -4,7 +4,7 @@ from utility import get_newest_replyed_tweet_id,set_newest_replyed_tweet_id
 from test_data import *
 
 
-def choice_tweet_after_newest_id(tweets: List[dict]):
+def select_tweet_after_newest_id(tweets: List[dict]):
     # ツイートの選択
     newest_id_int = get_newest_replyed_tweet_id()
     newer_tweets = []
@@ -23,5 +23,5 @@ def choice_tweet_after_newest_id(tweets: List[dict]):
 
 
 def exclude_replyed(tweets: List[dict]):
-    return choice_tweet_after_newest_id(tweets) # いいねしたもの = リプライ済 としている
+    return select_tweet_after_newest_id(tweets) # いいねしたもの = リプライ済 としている
 
