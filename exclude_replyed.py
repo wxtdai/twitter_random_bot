@@ -23,5 +23,5 @@ def select_tweet_after_newest_id(tweets: List[dict]):
 
 
 def exclude_replyed(tweets: List[dict]):
-    return select_tweet_after_newest_id(tweets) # いいねしたもの = リプライ済 としている
+    return select_tweet_after_newest_id(tweets)
 
